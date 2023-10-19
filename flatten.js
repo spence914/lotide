@@ -32,7 +32,7 @@ const flatten = function(tallArray) {
   for (let i = 0; i < tallArray.length; i++) {
     if (!Array.isArray(tallArray[i])) {
       flattenedArray.push(tallArray[i]);
-    } if (Array.isArray(tallArray[i])) {
+    } else {
       for (let j = 0; j < tallArray[i].length; j++) {
         flattenedArray.push(tallArray[i][j]);
       }
@@ -40,5 +40,5 @@ const flatten = function(tallArray) {
   } return flattenedArray;
 };
 
-assertArraysEqual(flatten([1, 2, [3, 4], 5, [6]]),[1, 2, 3, 4, 5, 6]);
-assertArraysEqual(flatten([2,4,6,[2,4,6]]),[2,4,6,2,4,6]);
+assertArraysEqual(flatten([1, 2, [3, 4], 5, [6]]), [1, 2, 3, 4, 5, 6]);
+assertArraysEqual(flatten([2, 4, 6, [2, 4, 6]]), [2, 4, 6, 2, 4, 6]);
