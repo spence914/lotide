@@ -38,7 +38,7 @@ const middle = function(fullArray) {
   if (fullArray.length < 3) {
     return middleElements;
   } else if (fullArray.length % 2 === 0) {
-    middleElements.push((fullArray[fullArray.length / 2] - 1) , fullArray[fullArray.length / 2]);
+    middleElements.push((fullArray[(fullArray.length / 2) - 1]) , fullArray[fullArray.length / 2]);
   } else if (fullArray.length % 2 !== 0) {
     middleElements.push(fullArray[Math.floor(fullArray.length / 2)]);
   } return middleElements
