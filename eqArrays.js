@@ -1,4 +1,4 @@
-const assertEqual = function (actual, expected) {
+const assertEqual = function(actual, expected) {
   if (actual === expected) {
     console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`);
   } else console.log(`🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`);
@@ -9,14 +9,19 @@ const assertEqual = function (actual, expected) {
 // 1. Inputs -> Two arrays
 // 2. Outputs -> Boolean value
 // 3. Process ->
-    // I can't compare arrays using === comparitor but I can compare strings, so if I convert the 
-    // arrasys to strings and compare them it will determine if they are equal
-    // I can convert the arrays using the toString() method, or the join() method
+// I can loop through the arrays to compare each individual value to one another at every
+// index to see if they are exactly equal.
 
-    const eqArrays = function(arr1, arr2) {
-     return arr1.toString() === arr2.toString();
-    };
+const eqArrays = function(arr1, arr2) {
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) {
+      return false;
+    }
+  } return true;
+};
 
 
 
-   // assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
+assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
+assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false);
+assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false);
