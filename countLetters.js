@@ -8,13 +8,17 @@ const countLetters = function(sentence) {
   const results = {};
 
   for (const letters of sentence) {
-    if (results[letters]) {
-      results[letters] += 1
-    } else {
-      results[letters] = 1
+    if (letters !== ' ') {
+      if (results[letters]) {
+        results[letters] += 1;
+      } else {
+        results[letters] = 1;
+      }
     }
   }
-  console.log(results);
-}
+  return results;
+};
 
-countLetters("lighthouse in the house");
+assertEqual(countLetters("lighthouse in the house").h , 4);
+assertEqual(countLetters("spencer ernest lewis")["s"] , 3);
+assertEqual(countLetters("spencer ernest lewis")[" "] , undefined);
