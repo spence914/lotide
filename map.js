@@ -1,4 +1,4 @@
-const eqArrays = function (arr1, arr2) {
+const eqArrays = function(arr1, arr2) {
   if (arr1.length !== arr2.length) {
     return false;
   }
@@ -9,28 +9,35 @@ const eqArrays = function (arr1, arr2) {
   } return true;
 };
 
-const assertArraysEqual = function (arr1, arr2) {
+const assertArraysEqual = function(arr1, arr2) {
   if (eqArrays(arr1, arr2)) {
     console.log(`✅✅✅ Assertion Passed: ${arr1} === ${arr2}`);
   } else {
     console.log(`🛑🛑🛑 Assertion Failed: ${arr1} !== ${arr2}`);
-  };
+  }
 };
 
-const words = ["ground", "control", "to", "major", "tom"];
 
-const map = function (array, callback) {
+
+const map = function(array, callback) {
   const results = [];
   for (let item of array) {
-    results.push(callback(item))
+    results.push(callback(item));
   }
   return results;
 };
 
+const words = ["ground", "control", "to", "major", "tom"];
 const results1 = map(words, word => word[0]);
 
 const nums = [1, 2, 3, 4];
-const results2 = map(nums, num => num * 2)
+const results2 = map(nums, num => num * 2);
 
-assertArraysEqual(results1, ['g', 'c', 't', 'm', 't'])
-assertArraysEqual(results2, [2, 4, 6, 8])
+const wordLengths = ["These", "are", "words", "with", "differing", "lengths"];
+const results3 = map(wordLengths, word => word.length);
+
+
+
+assertArraysEqual(results1, ['g', 'c', 't', 'm', 't']);
+assertArraysEqual(results2, [2, 4, 6, 8]);
+assertArraysEqual(results3, [5, 3, 5, 4, 9, 7]);
