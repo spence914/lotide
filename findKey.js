@@ -9,6 +9,25 @@ const assertEqual = function (actual, expected) {
 // it should return undefined
 
 
+// I can reuse some logic from findKeyByValue
+
+// const findKeyByValue = function(object, value) {
+//   for (const key of Object.keys(object)) {
+//     if (object[key] === value) {
+//       return key;
+//     }
+//   }
+// };
+// I will use a similar for loop to go through the keys of the object and then similarly
+//check them against the callback for truthiness.
+
+
+const findKey = function(object, callback){
+for (const key of Object.keys(object)) {
+  if (object[key] === )
+}
+}
+
 
 findKey({
   "Blue Hill": { stars: 1 },
