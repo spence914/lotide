@@ -10,7 +10,7 @@ const assertEqual = function(actual, expected) {
 
 
 
-// this function loops throught the keys of the passed function, then for each key checks if
+// this function loops throught the keys of the passed object, then for each key checks if
 // a callback function passed on the object associated with that key returns a truthy response
 // if yes it returns the key itself, otherwise it returns undefined
 
