@@ -1,4 +1,4 @@
-const eqArrays = function (arr1, arr2) {
+const eqArrays = function(arr1, arr2) {
   if (arr1.length !== arr2.length) {
     return false;
   }
@@ -9,7 +9,7 @@ const eqArrays = function (arr1, arr2) {
   } return true;
 };
 
-const assertEqual = function (actual, expected) {
+const assertEqual = function(actual, expected) {
   if (actual === expected) {
     console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`);
   } else {
@@ -18,7 +18,7 @@ const assertEqual = function (actual, expected) {
 };
 
 
-const eqObjects = function (object1, object2) {
+const eqObjects = function(object1, object2) {
 
   let keys1 = Object.keys(object1);
   let keys2 = Object.keys(object2);
@@ -32,7 +32,7 @@ const eqObjects = function (object1, object2) {
       if (!eqArrays(object1[key], object2[key])) {
         return false;
       }
-    } else if (typeof (object1[key]) === "object") {
+    } else if (typeof (object1[key]) === "object" && !Array.isArray(object1[key])) {
       if (!eqObjects(object1[key], object2[key])) {
         return false;
       }
