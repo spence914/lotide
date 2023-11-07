@@ -1,61 +1,27 @@
-const eqArrays = function(arr1, arr2) {
-  if (arr1.length !== arr2.length) {
-    return false;
-  }
-  for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] !== arr2[i]) {
-      return false;
-    }
-  } return true;
-};
+const eqArrays = require('./eqArrays');
 
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-    console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`);
-  } else {
-    console.log(`🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`);
-  }
-};
 
 
 const eqObjects = function(object1, object2) {
 
-  let keys1 = Object.keys(object1);
+  let keys1 = Object.keys(object1); // create arrays of keys of two obejcts passed
   let keys2 = Object.keys(object2);
 
-  if (!eqArrays(keys1.sort(), keys2.sort())) {
+  if (!eqArrays(keys1.sort(), keys2.sort())) { // sort the keys of the objects, if they are not equal then the obejcts cannot be either
     return false;
   }
 
-  for (let key of keys1) {
-    if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
-      if (!eqArrays(object1[key], object2[key])) {
+  for (let key of keys1) { // loop through keys of object1
+    if (Array.isArray(object1[key]) && Array.isArray(object2[key])) { // if the item at a given key in both objects is an array
+      if (!eqArrays(object1[key], object2[key])) { // // use eqArrays to assert if they are equal
         return false;
       }
-    } else if (typeof (object1[key]) === "object" && !Array.isArray(object1[key])) {
-      if (!eqObjects(object1[key], object2[key])) {
+    } else if (typeof (object1[key]) === "object" && !Array.isArray(object1[key])) { // if the items at a given key are objects and also not arrays
+      if (!eqObjects(object1[key], object2[key])) { // use eqObjects recursively to check if the objects match
         return false;
       }
     }
   } return true;
 };
 
-
-const shirtObject = { color: "red", size: "medium" };
-const anotherShirtObject = { size: "medium", color: "red" };
-assertEqual(eqObjects(shirtObject, anotherShirtObject), true);
-
-const longSleeveShirtObject = { size: "medium", color: "red", sleeveLength: "long" };
-assertEqual(eqObjects(shirtObject, longSleeveShirtObject), false);
-
-const multiColorShirtObject = { colors: ["red", "blue"], size: "medium" };
-const anotherMultiColorShirtObject = { size: "medium", colors: ["red", "blue"] };
-assertEqual(eqObjects(multiColorShirtObject, anotherMultiColorShirtObject), true);
-
-const longSleeveMultiColorShirtObject = { size: "medium", colors: ["red", "blue"], sleeveLength: "long" };
-assertEqual(eqObjects(multiColorShirtObject, longSleeveMultiColorShirtObject), false);
-
-assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true);
-
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false);
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false);
+module.exports = eqObjects;
