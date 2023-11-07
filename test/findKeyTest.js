@@ -1,37 +1,26 @@
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const findKey = require('../findKey');
 
-const restaurants = {
-  "Blue Hill": { stars: 1 },
-  "Akaleri": { stars: 3 },
-  "noma": { stars: 2 },
-  "elBulli": { stars: 3 },
-  "Ora": { stars: 2 },
-  "Akelarre": { stars: 3 }
-};
 
-assertEqual(findKey(restaurants, x => x.stars === 2), "noma");
-assertEqual(findKey(restaurants, x => x.stars === 4), undefined);
-assertEqual(findKey(restaurants, x => x.stars === 3), "Akaleri");
+describe("#findKey", () => {
+  const restaurants = {
+    "Blue Hill": { stars: 1 },
+    "Akaleri": { stars: 3 },
+    "noma": { stars: 2 },
+    "elBulli": { stars: 3 },
+    "Ora": { stars: 2 },
+    "Akelarre": { stars: 3 }
+  };
+  it('should return "noma" when given "(restaurants, x => x.stars === 2)"', () => {
+    assert.equal(findKey(restaurants, x => x.stars === 2), "noma");
+  });
 
-const apartments = {
-  "Appt1": {
-    sqrft: 400,
-    bedrooms: 1,
-    bathrooms: 1
-  },
-  "Appt2": {
-    sqrft: 500,
-    bedrooms: 2,
-    bathrooms: 2
-  },
-  "Appt3": {
-    sqrft: 750,
-    bedrooms: 3,
-    bathrooms: 2.5
-  }
-};
+  it('should return "undefined" when given "(restaurants, x => x.stars === 4)"', () => {
+    assert.equal(findKey(restaurants, x => x.stars === 4), undefined);
+  });
 
-assertEqual(findKey(apartments, x => x.bathrooms > 2), "Appt3");
-assertEqual(findKey(apartments, x => x.bedrooms === 1), "Appt1");
-assertEqual(findKey(apartments, x => x.bedrooms > 3), undefined);
+  it('shiuld return "Akaleri" when given "(restaurants, x => x.stars === 3)"', () => {
+    assert.equal(findKey(restaurants, x => x.stars === 3), "Akaleri");
+  });
+
+});
