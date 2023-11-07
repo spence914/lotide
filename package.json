@@ -1,7 +1,7 @@
 {
-  "name": "lotide",
+  "name": "@spence914/lotide",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a lodash clone used for learning as part of Lighthouse Labs web flex program",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -9,7 +9,7 @@
   "scripts": {
     "test": "mocha"
   },
-  "author": "",
+  "author": "spence914",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.3.10",
