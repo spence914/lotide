@@ -9,6 +9,11 @@ const flatten = require('../flatten');
 const letterPositions = require('../letterPositions');
 const takeUntil = require('../takeUntil');
 const without = require('../without');
+const assertArraysEqual = require('../assertArraysEqual');
+const assertEqual = require('../assertEqual');
+const eqArrays = require('../eqArrays');
+const eqObjects = require('../eqObjects');
+
 
 
 module.exports = {
@@ -22,5 +27,9 @@ module.exports = {
   flatten: flatten,
   letterPositions: letterPositions,
   takeUntil: takeUntil,
-  without: without
+  without: without,
+  assertArraysEqual: assertArraysEqual,
+  assertEqual: assertEqual,
+  eqArrays: eqArrays,
+  eqObjects: eqObjects
 };
