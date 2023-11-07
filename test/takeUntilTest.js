@@ -1,14 +1,17 @@
-const assertArraysEqual = require('../assertArraysEqual');
+const assert = require('chai').assert;
 const takeUntil = require('../takeUntil');
 
-const data1 = [1, 2, 5, 7, 2, -1, 2, 4, 5];
-const results1 = takeUntil(data1, x => x < 0);
-assertArraysEqual(results1, [1, 2, 5, 7, 2]);
 
-const data2 = ["I've", "been", "to", "Hollywood", ",", "I've", "been", "to", "Redwood"];
-const results2 = takeUntil(data2, x => x === ',');
-assertArraysEqual(results2, ["I've", "been", "to", "Hollywood"]);
+describe("#takeUntil", () => {
+  it('should return [1,2,5,7,2] when given [1,2,5,7,2,-1,2,4,5], x => x < 0', () => {
+    assert.deepEqual(takeUntil([1, 2, 5, 7, 2, -1, 2, 4, 5], x => x < 0), [1, 2, 5, 7, 2]);
+  });
 
-const data3 = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
-const results3 = takeUntil(data3, x => x % 5 === 0);
-assertArraysEqual(results3, [2, 4, 6, 8]);
+  it('should return ["I\'ve", "been", "to", "Hollywood"] when given ["I\'ve", "been", "to", "Hollywood", ",", "I\'ve", "been", "to", "Redwood"], x => x === ","', () => {
+    assert.deepEqual(takeUntil(["I've", "been", "to", "Hollywood", ",", "I've", "been", "to", "Redwood"],x => x === ","),["I've", "been", "to", "Hollywood"]);
+  });
+
+  it('should return [2, 4, 6, 8] when given [2, 4, 6, 8, 10, 12 ,14, 16, 18, 20], x => x % 5 === 0', () => {
+    assert.deepEqual(takeUntil([2, 4, 6, 8, 10, 12 ,14, 16, 18, 20], x => x % 5 === 0), [2, 4, 6, 8]);
+  });
+});
